@@ -33,5 +33,5 @@ RUN addgroup -S main && adduser -S main -G main
 USER main
 # WORKDIR /home/main
 COPY --from=builder /main ./
-EXPOSE 3000
+EXPOSE 8080
 ENTRYPOINT ["./main"]
