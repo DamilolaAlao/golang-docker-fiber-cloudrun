@@ -1,0 +1,16 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/shoply-279021/golang-fiber", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/shoply-279021/golang-fiber"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "golang-fiber"
+      - "--image"
+      - "gcr.io/shoply-279021/golang-fiber"
+      - "--region"
+      - "us-central1"
+      - "--platform"
+      - "managed"
